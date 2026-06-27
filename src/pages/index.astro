@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import App from "../app/App";
+import SiteAnalytics from "../app/SiteAnalytics";
+import "../styles/index.css";
+import profilePictureUrl from "../assets/profilePicture.jpg?url";
+
+const canonical = "https://ashit-upadhyay.vercel.app/";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ashit Upadhyay",
+  "url": "https://ashit-upadhyay.vercel.app",
+  "jobTitle": "AI & ML Student",
+  "alumniOf": [
+    { "@type": "EducationalOrganization", "name": "Vishveshwarya Group of Institutions" }
+  ],
+  "knowsAbout": [
+    "Python",
+    "Machine Learning",
+    "Scikit-learn",
+    "Deep Learning",
+    "Hugging Face",
+    "MySQL",
+    "NoSQL",
+    "AWS",
+    "Git & GitHub"
+  ],
+  "sameAs": [
+    "https://github.com/codexboy0417",
+    "https://www.linkedin.com/in/ashit-upadhyay/",
+    "https://www.instagram.com/codexboy_04/"
+  ],
+  "email": "sanjuupadhyay262@gmail.com",
+  "description": "3rd-year B.Tech AI & ML student building and shipping small ML and web projects while learning the fundamentals.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dadri",
+    "addressRegion": "Uttar Pradesh",
+    "addressCountry": "IN"
+  }
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Ashit Upadhyay - AI & ML Student",
+  "url": "https://ashit-upadhyay.vercel.app",
+  "author": { "@type": "Person", "name": "Ashit Upadhyay" }
+};
+---
+
+<BaseLayout
+  title="Ashit Upadhyay - AI & ML Student"
+  description="3rd-year AI & ML student at Vishveshwarya Group of Institutions, building small ML and web projects while learning the fundamentals."
+  canonical={canonical}
+  jsonLd={[personSchema, websiteSchema]}
+>
+  <link slot="head" rel="preload" as="image" href={profilePictureUrl} fetchpriority="high" type="image/jpeg" />
+  <App client:load />
+  <SiteAnalytics client:idle />
+</BaseLayout>

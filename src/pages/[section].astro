@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import App from "../app/App";
+import SiteAnalytics from "../app/SiteAnalytics";
+import "../styles/index.css";
+import profilePictureUrl from "../assets/Profile 1.jpeg?url";
+
+export function getStaticPaths() {
+  return [
+    { params: { section: "about" } },
+    { params: { section: "stack" } },
+    { params: { section: "projects" } },
+    { params: { section: "contact" } },
+  ];
+}
+
+const { section } = Astro.params;
+const canonical = `https://ashit-upadhyay.vercel.app/${section}`;
+
+const titles: Record<string, string> = {
+  about:           "About - Ashit Upadhyay | AI & ML Student",
+  stack:           "Stack - Ashit Upadhyay | AI & ML Student",
+  projects:        "Projects - Ashit Upadhyay | AI & ML Student",
+  contact:         "Contact - Ashit Upadhyay | AI & ML Student",
+};
+---
+
+<BaseLayout
+  title={titles[section] ?? "Ashit Upadhyay - AI & ML Student"}
+  description="3rd-year AI & ML student at Vishveshwarya Group of Institutions, building small ML and web projects while learning the fundamentals."
+  canonical={canonical}
+>
+  <link slot="head" rel="preload" as="image" href={profilePictureUrl} fetchpriority="high" type="image/jpeg" />
+  <App client:idle />
+  <SiteAnalytics client:idle />
+</BaseLayout>
