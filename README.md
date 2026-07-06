@@ -8,6 +8,7 @@ Personal portfolio site. Built with Astro, React, and Tailwind CSS.
 - React 18
 - Tailwind CSS 4
 - Motion (animations)
+- 
 
 ## Development
 
