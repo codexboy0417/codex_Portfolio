@@ -34,23 +34,69 @@ const CATEGORIES: Category[] = [
     techs: [
       { n: "Python", f: "python.svg" },
       {
+        n: "TypeScript / JS",
+        f: "typescript.svg",
+        brk: "TypeScript, JavaScript (ES6+)",
+      },
+      {
         n: "C / C++",
         parts: [{ f: "c.svg" }, { f: "cplusplus.svg" }],
         brk: "C, C++",
       },
+      { n: "SQL", f: "mysql.svg" },
     ],
   },
   {
-    label: "Machine Learning",
+    label: "AI & Multi-Agent Systems",
     color: C.ai,
+    techs: [
+      {
+        n: "Autonomous Agents",
+        f: "tb-brain.svg",
+        brk: "multi-agent coordination, SSE streaming",
+      },
+      {
+        n: "LangChain",
+        f: "langchain.svg",
+        brk: "chains, dynamic tool calling",
+      },
+      {
+        n: "RAG & Vector Search",
+        f: "faiss.svg",
+        brk: "FAISS, BM25, Reciprocal Rank Fusion",
+      },
+      {
+        n: "LLM Orchestration",
+        f: "tb-brain.svg",
+        brk: "Groq cascading, prompt engineering",
+      },
+    ],
+  },
+  {
+    label: "Machine Learning & Data",
+    color: C.perf,
     techs: [
       { n: "Scikit-learn", f: "tb-brain.svg" },
       {
+        n: "LightGBM",
+        f: "tb-brain.svg",
+        brk: "time-series, cross-validation",
+      },
+      {
         n: "Deep Learning",
         f: "tb-brain.svg",
-        brk: "neural networks, hidden layers",
+        brk: "neural networks, feature embeddings",
       },
       { n: "Hugging Face", f: "huggingface.svg" },
+    ],
+  },
+  {
+    label: "Frameworks & Backends",
+    color: C.backend,
+    techs: [
+      { n: "FastAPI", f: "fastapi.svg", brk: "REST APIs, Swagger docs" },
+      { n: "Streamlit", f: "tb-server-cog.svg", brk: "interactive ML dashboards" },
+      { n: "React & Vite", f: "tb-components.svg", brk: "React 18, Tailwind CSS" },
     ],
   },
   {
@@ -62,21 +108,18 @@ const CATEGORIES: Category[] = [
     ],
   },
   {
-    label: "Cloud & Deployment",
+    label: "Cloud & Dev Workflow",
     color: C.cloud,
     techs: [
       { n: "AWS", f: "aws.svg" },
-      { n: "Netlify / Render", f: "tb-server-cog.svg" },
+      { n: "Vercel", f: "vercel.svg" },
+      { n: "Git & GitHub", f: "github.svg" },
+      { n: "Docker", f: "docker.svg" },
     ],
-  },
-  {
-    label: "Dev Workflow",
-    color: C.backend,
-    techs: [{ n: "Git & GitHub", f: "github.svg" }],
   },
 ];
 
-const AI_TOOLS = ["Claude", "Google AI Studio", "Antigravity", "Stitch"];
+const AI_TOOLS = ["Claude", "Google AI Studio", "Groq", "Antigravity", "Cursor"];
 
 function Icon({ u, size }: { u: Unit; size: number }) {
   if (u.chip) {

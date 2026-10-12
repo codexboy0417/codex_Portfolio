@@ -146,7 +146,15 @@ export function Contact() {
     setTimeout(() => setDownloadToastMessage(null), 1600);
   };
 
-  const links = [
+  type ContactLink = {
+    label: string;
+    value: string;
+    href: string;
+    icon: React.ReactNode;
+    download?: boolean | string;
+  };
+
+  const links: ContactLink[] = [
     {
       label: "Email",
       value: "sanjuupadhyay262@gmail.com",
@@ -377,11 +385,10 @@ export function Contact() {
                     textJustify: "inter-word",
                   }}
                 >
-                  Heads-down building right now - not looking for roles. But if
-                  you've got a hard problem, a wild idea, or just want to talk
-                  shop about LLMs, distributed systems, scientific ML, or why
-                  this site is unreasonably over-engineered for a portfolio, I'm
-                  always up for that.
+                  Passionate about building AI & ML systems, autonomous agents,
+                  and production data solutions. Always open to internships,
+                  collaborative projects, or deep-dive discussions on LLMs,
+                  RAG architectures, and machine learning!
                 </m.p>
               </div>
 
@@ -523,6 +530,27 @@ export function Contact() {
               </m.div>
             </div>
 
+            {/* Footer */}
+            <div
+              style={{
+                textAlign: "center",
+                marginTop: isMobile ? "5rem" : "8rem",
+                paddingTop: "2rem",
+                borderTop: "1px solid rgba(255,255,255,0.07)",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: FONT_MONO,
+                  fontSize: "0.6rem",
+                  letterSpacing: "0.12em",
+                  color: "rgba(255,255,255,0.5)",
+                  textTransform: "uppercase",
+                }}
+              >
+                Designed & Built by Ashit Upadhyay • Deployed on Vercel
+              </span>
+            </div>
           </div>
         </div>
       </div>

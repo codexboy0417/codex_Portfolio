@@ -168,11 +168,12 @@ export function About() {
                     textJustify: "inter-word",
                   }}
                 >
-                  Small projects rather than big claims: a spam classifier
-                  trained with TF-IDF and scikit-learn, simple games shipped
-                  end-to-end, a Git/GitHub workflow I actually use. That's
-                  where the real learning happens - the parts that don't show
-                  up in a syllabus.
+                  I focus on building real systems that solve complex problems:
+                  an autonomous multi-agent research hive coordinating 6 agents
+                  over FAISS and BM25 RRF, a dual-branch RAG engine with Groq
+                  model cascading, a retail demand intelligence platform
+                  (LightGBM) over 1M+ transactions, and astronomical transit
+                  detectors for Kepler and TESS light curves.
                 </m.p>
 
                 <m.p
@@ -190,11 +191,12 @@ export function About() {
                     textJustify: "inter-word",
                   }}
                 >
-                  Right now I'm digging into deep learning fundamentals -
-                  neural networks, hidden layers - and getting hands-on with
-                  Hugging Face and MediaPipe, alongside cloud and database
-                  basics like AWS, MySQL, and NoSQL. Still early, still
-                  figuring a lot out, and genuinely enjoying it.
+                  My approach centers on end-to-end engineering — moving from
+                  raw data ingestion, feature engineering, and mathematical
+                  modeling to production APIs (FastAPI), interactive frontends
+                  (React 18, Vite, Streamlit), and resilient deployment
+                  workflows. Still learning, always building, and constantly
+                  shipping.
                 </m.p>
               </div>
 
