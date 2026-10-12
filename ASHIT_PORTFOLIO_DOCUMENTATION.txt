@@ -1,0 +1,1098 @@
+================================================================================
+  ASHIT UPADHYAY PORTFOLIO — COMPLETE PROJECT DOCUMENTATION
+  Generated: October 11, 2026
+  Owner: Ashit Upadhyay (codexboy_04)
+  Email: sanjuupadhyay262@gmail.com
+================================================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLE OF CONTENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1.  Project Overview
+  2.  Tech Stack (Every Library, Version, Purpose)
+  3.  Project Directory Structure
+  4.  How The Site Works (Architecture)
+  5.  Every File Changed / Added / Deleted
+  6.  Component-by-Component Breakdown
+  7.  Animation & Motion System
+  8.  IntroSplash — Deep Technical Breakdown
+  9.  CornerHUD — Deep Technical Breakdown
+  10. Visual Design System (Colors, Typography, Spacing)
+  11. Responsive Behavior (Mobile / Tablet / Desktop)
+  12. SEO, Meta Tags, Schema.org
+  13. Image Assets — Generation Details
+  14. Vercel Deployment Configuration
+  15. Git Setup Instructions
+  16. Personal Details Embedded in Codebase
+  17. What Was Deleted and Why
+  18. Build Commands
+  19. Known Quirks & Notes
+  20. Future Improvements
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. PROJECT OVERVIEW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Starting point:
+  The original codebase was ashwingupta.dev — a cinematic single-page
+  portfolio by Ashwin Gupta, with design baseline by Kajal Verma.
+
+Goal:
+  Transform it into an exact visual replica customized entirely for
+  Ashit Upadhyay — no trace of the original owner left anywhere.
+
+Owner details:
+  Full Name    : Ashit Upadhyay
+  Handle       : codexboy_04
+  Email        : sanjuupadhyay262@gmail.com
+  GitHub       : github.com/codexboy0417
+  LinkedIn     : linkedin.com/in/ashit-upadhyay
+  Instagram    : instagram.com/codexboy_04
+  Location     : Dadri, Uttar Pradesh, India
+  College      : Vishveshwarya Group of Institutions (VGI)
+  Degree       : B.Tech AI & ML (2024–2028), 3rd Year
+  Status       : Open to internships & collaborations
+  Deploy URL   : https://ashit-upadhyay.vercel.app
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. TECH STACK — EVERY LIBRARY, VERSION, AND PURPOSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CORE FRAMEWORK
+  astro ^5.5.5
+    — Static site generator. Builds final HTML/CSS/JS. Handles routing,
+      layouts, pages, and integrations. Output mode: "static" (no server).
+
+  react 18.3.1
+    — UI component layer inside Astro. All interactive sections
+      (Hero, About, Skills, Projects, Contact, Intro animation) are
+      React components mounted as Astro islands.
+
+  react-dom 18.3.1
+    — Required alongside React for DOM rendering.
+
+  @astrojs/react ^4.4.0
+    — Astro integration that enables React components inside .astro files.
+
+BUNDLER & BUILD
+  vite ^6.4.1 (pinned to 6.3.5 via pnpm override)
+    — Underlying bundler used by Astro. Handles hot module replacement,
+      asset processing, TypeScript compilation, and production bundling.
+
+  @vitejs/plugin-react 4.7.0
+    — Vite plugin enabling React JSX transform in the Vite pipeline.
+
+STYLING
+  tailwindcss 4.1.12
+    — Utility-first CSS framework. All layout, spacing, color, and
+      typography classes are Tailwind utilities.
+
+  @tailwindcss/vite 4.1.12
+    — Tailwind 4's native Vite plugin (replaces PostCSS config).
+
+  tw-animate-css 1.3.8
+    — Pre-built Tailwind-compatible animation keyframes.
+
+  class-variance-authority 0.7.1
+    — Type-safe utility for composing Tailwind class variants.
+
+  clsx 2.1.1
+    — Conditional className builder utility.
+
+  tailwind-merge 3.2.0
+    — Merges Tailwind classes without conflicts.
+
+ANIMATION
+  motion 12.23.24
+    — Motion One / Framer Motion library (v12 unified package).
+      Used for scroll-based reveal animations, staggered entry,
+      hover effects, card tilt, and height transitions.
+    — Key imports: `motion`, `LazyMotion`, `domAnimation`, `AnimatePresence`,
+      `useMotionValue`, `useTransform`, `useSpring`
+
+FONTS (self-hosted via @fontsource — no Google CDN call)
+  @fontsource/dm-sans ^5.2.8
+    — Clean geometric sans-serif. Used for all body text, UI labels,
+      and the IntroSplash display text.
+
+  @fontsource/playfair-display ^5.2.8
+    — High-contrast serif. Used for hero name, section headlines,
+      and project titles. Establishes editorial brand voice.
+
+  @fontsource/dm-mono ^5.2.7
+    — Monospaced font. Used for metadata chips, status tags,
+      index numbers, and all "system-like" labels.
+
+ICONS
+  lucide-react 0.487.0
+    — SVG icon library. Used throughout: Mail, Github, Linkedin,
+      Instagram, MapPin, ExternalLink, ChevronDown, Copy, Check,
+      ArrowUpRight, etc.
+
+ANALYTICS & PERFORMANCE
+  @vercel/analytics ^1.6.1
+    — Page-view and event tracking injected into the Astro layout.
+
+  @vercel/speed-insights ^2.0.0
+    — Web Vitals (LCP, CLS, FID) reporting to Vercel dashboard.
+
+SEO
+  @astrojs/sitemap ^3.7.2
+    — Auto-generates sitemap-index.xml and sitemap-0.xml at build time
+      based on all pages in src/pages/.
+
+TESTING (devDependency)
+  @playwright/test ^1.60.0
+    — End-to-end testing framework. Chromium pre-installed at
+      /opt/pw-browsers/chromium.
+
+IMAGE PROCESSING (devDependency)
+  sharp ^0.34.5
+    — Used by Astro internally for image optimization during build.
+
+LANGUAGE
+  TypeScript (strict mode)
+    — tsconfig extends "astro/tsconfigs/strict"
+    — JSX: react-jsx with jsxImportSource: react
+    — baseUrl: "." with "@" alias pointing to ./src
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. PROJECT DIRECTORY STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ashwingupta.dev-main/
+├── astro.config.mjs              ← Astro config: site URL, integrations, redirects
+├── package.json                  ← Dependencies, scripts
+├── tsconfig.json                 ← TypeScript config (strict, react-jsx)
+├── vite.config.ts                ← Vite config: React plugin, Tailwind, @ alias
+├── vercel.json                   ← Vercel: cache headers, URL rewrites
+├── .gitignore                    ← Cleaned of Ashwin references
+├── README.md                     ← Fully rewritten for Ashit Upadhyay
+│
+├── public/
+│   ├── og-image.jpg              ← Open Graph preview image (1512×788, regenerated)
+│   ├── apple-touch-icon.png      ← iOS home screen icon (180×180, regenerated)
+│   ├── favicon.ico               ← Browser tab icon (original kept)
+│   ├── robots.txt                ← Updated sitemap URL to ashit-upadhyay.vercel.app
+│   └── logos/                    ← Technology SVG icons (55 deleted, 10 kept)
+│       ├── aws.svg
+│       ├── c.svg
+│       ├── cplusplus.svg
+│       ├── github.svg
+│       ├── huggingface.svg
+│       ├── mysql.svg
+│       ├── python.svg
+│       ├── tb-brain.svg
+│       ├── tb-database-search.svg
+│       └── tb-server-cog.svg
+│
+├── src/
+│   ├── assets/
+│   │   └── profilePicture.jpg    ← Ashit's real photo (added, replaces .webp)
+│   │
+│   ├── layouts/
+│   │   └── BaseLayout.astro      ← Global HTML shell, meta tags, fonts, analytics
+│   │
+│   ├── pages/
+│   │   ├── index.astro           ← Root page, Schema.org JSON-LD, mounts App
+│   │   ├── [section].astro       ← Dynamic routes for /about /stack /projects /contact
+│   │   └── projects/
+│   │       └── [slug].astro      ← Individual project page (if needed)
+│   │
+│   └── app/
+│       ├── App.tsx               ← Root React component, renders all sections
+│       ├── components/
+│       │   ├── IntroSplash.tsx   ← Canvas particle animation intro screen
+│       │   ├── CornerHUD.tsx     ← Bottom-right live HUD (timer + mouse coords)
+│       │   ├── Hero.tsx          ← Name, role, CTA, portrait, social links
+│       │   ├── About.tsx         ← Bio, pillars, thinking model
+│       │   ├── Skills.tsx        ← Capability cards, chip cloud, tool pills
+│       │   ├── Projects.tsx      ← Accordion project cards
+│       │   └── Contact.tsx       ← Email, social links, contact form
+│       └── hooks/
+│           └── useBreakpoint.ts  ← isMobile / isTablet / isDesktop hooks
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. HOW THE SITE WORKS — ARCHITECTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RENDERING PIPELINE:
+  1. Astro compiles all .astro pages at build time → static HTML
+  2. React components are hydrated client-side where needed
+  3. Vite bundles all JS/TS/CSS into optimized chunks in dist/_astro/
+  4. Vercel serves the dist/ folder with custom cache headers
+
+PAGE FLOW:
+  Browser loads / → index.astro → BaseLayout.astro wraps it
+  → <App client:load /> mounts React
+  → IntroSplash renders on top (full screen, z-50)
+  → User dismisses splash → App reveals all sections
+  → Sections: Hero → About → Skills → Projects → Contact
+
+SPATIAL MODEL (3 layers):
+  Layer 1 — Fixed Background: A pure black (#070707) room-tone background.
+             Stays fixed behind everything.
+  Layer 2 — Particle Field: Ambient floating particles on a canvas element.
+             Independent motion, provides depth illusion.
+  Layer 3 — Scrollable Content: All actual sections scroll over layers 1 & 2.
+             Gives the "moving through space" UX feel.
+
+STATE MANAGEMENT:
+  No Redux or external state library. All state is local React useState/useRef.
+  - IntroSplash: local `dismissed` boolean
+  - Projects: local `openId` string for accordion
+  - Contact form: local `status` ("idle" | "sending" | "sent" | "error")
+  - CornerHUD: local timer ref + mouse event listener
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. EVERY FILE CHANGED / ADDED / DELETED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FILES MODIFIED:
+  src/app/App.tsx
+  src/app/components/Hero.tsx
+  src/app/components/About.tsx
+  src/app/components/Skills.tsx
+  src/app/components/Projects.tsx
+  src/app/components/Contact.tsx
+  src/layouts/BaseLayout.astro
+  src/pages/index.astro
+  src/pages/[section].astro
+  src/pages/projects/[slug].astro
+  astro.config.mjs
+  vercel.json
+  public/robots.txt
+  .gitignore
+  README.md
+
+FILES ADDED:
+  src/app/components/IntroSplash.tsx   ← New canvas particle intro animation
+  src/app/components/CornerHUD.tsx     ← New bottom-right live HUD
+  src/assets/profilePicture.jpg        ← Ashit's real photo
+  public/og-image.jpg                  ← Regenerated OG image
+  public/apple-touch-icon.png          ← Regenerated iOS icon
+
+FILES DELETED:
+  src/assets/Ashwin_Gupta_Senior_AI_Engineer.pdf
+  src/assets/PINNs whitepaper.pdf
+  src/assets/profilePicture.webp
+  src/assets/BMSlogo.webp
+  src/assets/GuinnessLogo.webp
+  src/assets/HDFClogo.webp
+  src/assets/HSBCLogo.webp
+  src/assets/HSBCLogo.PNG
+  src/assets/IIITlogo.webp
+  src/assets/KaggleLogo.webp
+  src/assets/augmentAILogo.webp
+  src/assets/cellstratLogo.webp
+  src/assets/coforgeLogo.webp
+  src/assets/gidaLogo.webp
+  src/assets/iiscLogo.webp
+  src/assets/outlawedLogo.webp
+  src/assets/prismforceLogo.webp
+  src/assets/spartificialLogo.webp
+  src/app/components/Impact.tsx
+  src/app/components/Featured.tsx
+  src/app/components/Recommendations.tsx
+  src/app/components/Research.tsx
+  src/app/components/ExperienceTimeline.tsx
+  src/app/components/BottomRightHUD.tsx  (old version, replaced)
+  src/app/data/impactData.ts
+  src/pages/work/ (entire directory)
+  src/pages/research/ (entire directory)
+  src/pages/articles/ (entire directory)
+  public/PINNs_whitepaper.pdf
+  public/sitemap-index.xml (stale, regenerated at build)
+  public/sitemap-0.xml    (stale, regenerated at build)
+  ruvector.db             (unused binary blob, 1.5MB)
+  55 logo SVG/PNG files from public/logos/ (all Ashwin-specific logos)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. COMPONENT-BY-COMPONENT BREAKDOWN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+── App.tsx ──────────────────────────────────────────────────────────────────
+Purpose: Root React component. Renders every section in order.
+
+Changes made:
+  - Added import and render of <IntroSplash />
+  - Added import and render of <CornerHUD />
+  - Removed imports: ExperienceTimeline, Impact, Featured, Recommendations
+  - Removed BottomRightHUD import
+  - Removed "awwwards" ribbon block (Ashwin's award badge)
+  - Fixed "articles" nav link → GitHub link
+  - Retained: HologramInterface wrapper, Hero, About, Skills, Projects, Contact
+
+Render order:
+  <IntroSplash />        ← full-screen overlay, dismisses on interaction
+  <CornerHUD />          ← persistent bottom-right HUD
+  <HologramInterface>    ← main scrollable layout
+    <Hero />
+    <About />
+    <Skills />
+    <Projects />
+    <Contact />
+  </HologramInterface>
+
+── Hero.tsx ─────────────────────────────────────────────────────────────────
+Purpose: First visible section after splash dismissal. Identity + CTA.
+
+Content changes:
+  - Name: "Ashit Upadhyay" (two-part serif display)
+  - Role line: "AI & ML — 3rd Year Student"
+  - Institution: "Vishveshwarya Group of Institutions"
+  - Tag chips below name: "Python • Scikit-learn • Git/GitHub"
+  - Status: "Status: Learning • Building • Shipping"
+  - Impact statement: honest student framing (no fabricated metrics)
+  - Photo: profilePicture.jpg (Ashit's real photo)
+  - CTA: "View Projects" button → scrolls to Projects section
+
+Code changes:
+  - import profilePicture from "../../assets/profilePicture.jpg?url"
+  - alt="Ashit Upadhyay" on <img>
+  - Removed resume download button entirely (no PDF available)
+  - Social links: GitHub, LinkedIn, Instagram, Email
+
+Animations in Hero:
+  - staggered motion entrance for name, role, bio, CTA
+  - Pointer parallax on desktop (text layers shift at different depths)
+  - Photo has cinematic treatment: slight scale, blur edge, overlay gradient
+  - Gentle reset easing when mouse leaves viewport
+
+── About.tsx ────────────────────────────────────────────────────────────────
+Purpose: Philosophy, bio, thinking model, and background.
+
+Content changes:
+  - Headline: "Still learning. Already building."
+  - Subline: "Curious by default. Persistent when it gets hard."
+  - Bio para 1: 3rd year at VGI (2024-2028), learning by building real things
+  - Bio para 2: SpamGuard spam classifier, Tic-Tac-Toe game, references
+                HuggingFace, MediaPipe, AWS
+  - Bio para 3: interest in deep learning and systems thinking
+
+Pillars (3 cards):
+  1. "Learning by Building" — real projects over tutorials
+  2. "Fundamentals First" — understanding before shortcuts
+  3. "Ship It, Then Improve It" — deploy, then iterate
+
+Removed:
+  - All company logo imports (BMS, Coforge, Guinness, HSBC, Kaggle, etc.)
+  - Highlights marquee ("Gold and Glory" scrolling strip)
+  - "Don't do" list replaced with honest student version
+  - Experience/education timeline entries all replaced
+  - All mentions of IIIT Bangalore, Augment AI, GIDA, etc.
+
+Animations:
+  - reveal-on-scroll for text blocks and pillar cards
+  - card tilt on hover (3D perspective transform, mouse position-based)
+  - staggered entrance of pillar cards (0.1s delay between each)
+
+── Skills.tsx ───────────────────────────────────────────────────────────────
+Purpose: Show technical capabilities honestly as a student.
+
+Section headline: "What I'm learning and building with."
+
+5 capability categories:
+  1. Languages
+     Tags: Python, C / C++
+     Icon: tb-brain.svg
+
+  2. Machine Learning
+     Tags: Scikit-learn, Deep Learning, Hugging Face
+     Icon: tb-brain.svg
+
+  3. Data & Databases
+     Tags: MySQL, NoSQL
+     Icon: tb-database-search.svg
+
+  4. Cloud & Deployment
+     Tags: AWS, Netlify / Render
+     Icon: tb-server-cog.svg
+
+  5. Dev Workflow
+     Tags: Git & GitHub
+     Icon: github.svg
+
+Technology chip cloud (bottom):
+  AWS, Python, C, C++, MySQL, HuggingFace (SVG logos from public/logos/)
+
+"Tools I Use" pill row (added below chip cloud):
+  Claude · Google AI Studio · Antigravity · Stitch
+
+Desktop layout:
+  - Left sticky rail: index number + section headline, stays in view while scrolling
+  - Right column: capability cards with hover depth
+
+Mobile layout:
+  - Single column, left rail collapses into a top header
+  - Cards stack vertically
+
+── Projects.tsx ─────────────────────────────────────────────────────────────
+Purpose: Prove execution with real projects.
+
+Removed:
+  - ResearchCard and researchItems (academic papers section)
+  - FeaturedCard (HSBC featured project)
+  - All logo imports: COFORGE_LOGO, GIDA_LOGO, HDFC_LOGO, BMSCE_LOGO
+  - PROJECT_DETAIL_PATHS set to empty object {}
+  - Duplicate SUMMARY_LABELS declaration (TypeScript error fix)
+  - All original Ashwin Gupta projects
+
+2 real projects added:
+
+  PROJECT 1: SpamGuard Email Classifier
+    Status: completed (green badge)
+    Tags: Python, Scikit-learn, Streamlit, TF-IDF
+    Description: ML spam classifier using TF-IDF vectorizer and Naive Bayes
+    Impact: Classifies emails as spam/ham with high accuracy
+    GitHub: https://github.com/codexboy0417/SpamGuard-Email-Classifier
+    Bullet points:
+      — TF-IDF feature extraction on raw email text
+      — Naive Bayes classifier trained on public spam dataset
+      — Streamlit web UI for real-time prediction
+      — Deployed and accessible via browser
+
+  PROJECT 2: Tic-Tac-Toe.v1
+    Status: completed (green badge)
+    Tags: HTML, CSS, JavaScript, GitHub Pages
+    Description: Classic 2-player Tic-Tac-Toe game built from scratch
+    Live URL: https://codexboy0417.github.io/Tic-Tac-Toe.v1/
+    GitHub: https://github.com/codexboy0417/Tic-Tac-Toe.v1
+    Bullet points:
+      — Pure vanilla HTML/CSS/JS (no frameworks)
+      — Turn-based game logic with win detection
+      — Responsive layout for mobile and desktop
+      — Deployed via GitHub Pages
+
+Card behavior:
+  - Accordion: one card open at a time by default
+  - Collapsed: shows title, status badge, tags
+  - Expanded: shows description, bullet points, impact pill, links
+  - Expand/collapse is keyboard-accessible (Enter/Space)
+  - Height transition animated with Motion's AnimatePresence
+
+── Contact.tsx ──────────────────────────────────────────────────────────────
+Purpose: Convert interest into outreach.
+
+Contact links:
+  Email     : sanjuupadhyay262@gmail.com (clipboard copy on click)
+  GitHub    : github.com/codexboy0417
+  LinkedIn  : linkedin.com/in/ashit-upadhyay
+  Instagram : instagram.com/codexboy_04
+  Location  : Dadri, Uttar Pradesh, India
+
+Availability badge:
+  Green dot + "Open to internships & collaborations"
+
+Clipboard copy:
+  Clicking email copies "sanjuupadhyay262@gmail.com" to clipboard.
+  Checkmark icon appears for 2 seconds, then reverts.
+
+Contact form:
+  Fields: Name, Email, Message
+  States: idle → sending → sent | error
+  Post-success: "Send another message" reset button
+  Error state: visible error message with retry path
+
+Removed:
+  - Resume/CV download link (no PDF exists for Ashit)
+  - KaggleIcon component and Kaggle link
+  - FileDown import (replaced with Instagram icon)
+  - Footer credit line: "Template design by Kajal Verma..."
+
+Icons used:
+  Mail, Github, Linkedin, Instagram, MapPin (lucide-react)
+  Copy, Check (lucide-react, for clipboard interaction)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. ANIMATION & MOTION SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Library: motion 12.23.24 (unified Framer Motion / Motion One package)
+Import pattern: import { motion, LazyMotion, domAnimation } from "motion/react"
+
+LazyMotion wrapper:
+  <LazyMotion features={domAnimation}>
+    {/* all animated components go here */}
+  </LazyMotion>
+  This loads only the animation features actually needed (no extra bundle cost).
+
+MOTION PATTERNS USED:
+
+1. Scroll-reveal (whileInView)
+   Elements animate from { opacity: 0, y: 24 } to { opacity: 1, y: 0 }
+   when they enter the viewport.
+   viewport={{ once: true }} → plays only on first scroll past
+   transition: { duration: 0.5, ease: "easeOut" }
+
+2. Staggered children (variants + staggerChildren)
+   Parent container has staggerChildren: 0.08 in transition
+   Each child animates with a delay offset
+   Used in: Hero chips, About pillars, Skills cards
+
+3. AnimatePresence (mount/unmount transitions)
+   Used in Projects accordion: card detail section fades + slides in/out
+   initial={{ opacity: 0, height: 0 }}
+   animate={{ opacity: 1, height: "auto" }}
+   exit={{ opacity: 0, height: 0 }}
+
+4. useMotionValue + useTransform (pointer parallax)
+   In Hero: tracks mouse X/Y as motion values
+   Text layers have different transform ratios (depth simulation)
+   Layer 1 (name): moves -8px to +8px
+   Layer 2 (photo): moves -4px to +4px (half speed = "further")
+   Layer 3 (chips): moves -12px to +12px (faster = "closer")
+
+5. useSpring (smooth easing)
+   Applied to motion values to add spring physics
+   stiffness: 100, damping: 20 → smooth but responsive
+
+6. Card tilt (3D perspective on hover)
+   onMouseMove calculates mouse position relative to card center
+   rotateX and rotateY applied as style transforms
+   perspective: 1000px on parent
+   Resets smoothly on mouseLeave with transition: { duration: 0.5 }
+
+7. Reduced motion:
+   prefers-reduced-motion media query checked via window.matchMedia
+   Particle animation slows to minimal drift (no jitter)
+   Scroll reveals still run but with shorter duration
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. INTROSPLASH — DEEP TECHNICAL BREAKDOWN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+File: src/app/components/IntroSplash.tsx
+
+Purpose:
+  Full-screen cinematic intro animation that plays once when the site loads.
+  Shows the text "codexboy_04" assembled from drifting particles.
+  User dismisses it by scrolling, pressing any key, touching, or clicking.
+
+CANVAS SETUP:
+  Two canvases are used:
+    offscreenCanvas (octx) — hidden, used only for text measurement/rasterization
+    mainCanvas (ctx) — visible fullscreen, displays particle animation
+
+  DPR-aware rendering:
+    const dpr = window.devicePixelRatio || 1
+    canvas.width  = w * dpr
+    canvas.height = h * dpr
+    ctx.scale(dpr, dpr)
+  This ensures crisp rendering on Retina/HiDPI screens.
+
+FONT HANDLING:
+  Font family: "DM Sans", sans-serif
+  Weight: 700 (bold)
+  Base font size: 10% of min(width, height)
+
+  Auto-shrink to fit any screen width:
+    const maxWidth = w * 0.86
+    const measured = octx.measureText(TEXT).width
+    if (measured > maxWidth) {
+      fontSize = fontSize * (maxWidth / measured)
+      octx.font = `700 ${fontSize}px "DM Sans", sans-serif`
+    }
+  This guarantees the text is never clipped on small screens (mobile).
+
+  Font load wait:
+    document.fonts.ready.then(() => { initParticles() })
+  Prevents rendering before DM Sans is loaded (no fallback font particles).
+
+TEXT:
+  TEXT = "codexboy_04"
+  Color: rgba(232, 224, 208, 0.92)  ← warm off-white, 92% opacity
+
+PARTICLE SAMPLING:
+  1. Draw text onto offscreen canvas with white fill
+  2. Read pixel data: octx.getImageData(0, 0, ow, oh).data
+  3. Every 3rd pixel: if alpha > 128 → that pixel is "inside the text"
+  4. Store its canvas (x, y) position as a target point
+  This gives a list of target positions forming the text shape.
+
+PARTICLE OBJECT STRUCTURE:
+  Each particle has:
+    x, y    — current canvas position (starts scattered randomly across screen)
+    tx, ty  — target position (inside the text shape)
+    size    — random 1.0–1.7px radius
+    alpha   — random 0.55–0.95 (varied brightness)
+    speed   — random 0.04–0.08 (varied easing rate)
+
+PARTICLE COUNT:
+  Sampled from the text pixel data (every 3rd pixel at ~86% of viewport).
+  Typically 1500–4000 particles depending on screen size and font size.
+
+ANIMATION LOOP (requestAnimationFrame):
+  Each frame:
+    1. Clear canvas: ctx.clearRect(0, 0, w, h)
+    2. For each particle:
+       a. Calculate ease = 1 - Math.exp(-elapsed / 1200)
+          — Exponential ramp from 0 to 1 over ~1.2 seconds
+       b. Calculate jitter = (1 - ease) * 0.3
+          — Jitter starts at 0.3 and fades to 0 as ease approaches 1
+          — This makes early motion feel alive/scattered, settles to precise
+       c. Update position:
+          p.x += (p.tx - p.x) * 0.06 * ease + (Math.random() - 0.5) * jitter
+          p.y += (p.ty - p.y) * 0.06 * ease + (Math.random() - 0.5) * jitter
+          — Spring-like: always pulled toward target, slows as it arrives
+          — Jitter term is random displacement ±0.15px (fades to 0)
+       d. Draw particle:
+          ctx.globalAlpha = p.alpha
+          ctx.beginPath()
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+          ctx.fill()
+
+JITTER FADE PHYSICS:
+  This is the key difference from the broken first version.
+  In the old version, mouse proximity caused white flares and shake.
+  The new version uses jitter that is tied to the assembly progress (ease).
+  When ease = 0 (start): jitter = 0.3 (scattered, alive)
+  When ease = 1 (assembled): jitter = 0 (perfectly still)
+  No mouse tracking. No proximity effects. Pure mathematical settling.
+
+DISMISSAL:
+  Event listeners on document:
+    scroll  → dismiss()
+    wheel   → dismiss()
+    touchstart → dismiss()
+    keydown → dismiss()
+    click (after 600ms delay to avoid accidental dismiss) → dismiss()
+
+  dismiss():
+    Sets dismissed state → triggers fade-out CSS transition
+    After 500ms: removes IntroSplash from DOM entirely
+
+FADE OUT:
+  CSS opacity transition: opacity: 0, transition: opacity 0.5s ease
+  Applied when dismissed=true
+
+MOBILE HANDLING:
+  Same component, same canvas.
+  Font auto-shrink (86% max width) ensures it fits on 360px wide phones.
+  No mouse parallax (no mouse on touch devices).
+  Touch event triggers dismissal.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9. CORNERHUD — DEEP TECHNICAL BREAKDOWN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+File: src/app/components/CornerHUD.tsx
+
+Purpose:
+  A persistent bottom-right corner UI element displaying:
+    - A live elapsed session timer (HH:MM:SS)
+    - Spinning decorative ring (CSS animation)
+    - Live mouse X / Y coordinates
+
+Visibility:
+  Hidden on screens below 640px width (no mouse on touch, not useful on mobile)
+  CSS: hidden sm:flex (Tailwind responsive)
+
+Timer:
+  Starts at 00:00:00 when component mounts
+  Uses setInterval(tick, 1000) to increment every second
+  Displays: HH:MM:SS format with zero-padding
+
+Mouse coordinates:
+  document.addEventListener("mousemove", handler)
+  Updates mouseX, mouseY state on every mousemove
+  Displays as: "X: 0427  Y: 0812" (zero-padded to 4 digits)
+
+Spinning ring:
+  SVG circle with CSS animation: spin 4s linear infinite
+  Decorative only — adds the "system monitoring" aesthetic
+
+Styling:
+  Fixed position: bottom-4 right-4
+  Dark translucent background: bg-black/60 backdrop-blur
+  DM Mono font for all labels (system/machine aesthetic)
+  Text size: text-[10px] (very small, unobtrusive)
+  Green accent color for timer digits
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+10. VISUAL DESIGN SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COLOR PALETTE:
+  Background base      : #070707  (near-black, pure spatial depth)
+  Primary text         : #E8E0D0  (warm off-white, high contrast)
+  Secondary text       : rgba(232, 224, 208, 0.55) (60% opacity)
+  Tertiary text        : rgba(232, 224, 208, 0.35) (35% opacity)
+  Card surfaces        : rgba(255, 255, 255, 0.03–0.06) (subtle translucency)
+  Card borders         : rgba(255, 255, 255, 0.06–0.10)
+
+  Status accents:
+    Green  (#22c55e) → completed / available / success
+    Cyan   (#06b6d4) → client delivery / live project
+    Yellow (#eab308) → in-progress / award
+
+  No bright UI blues, purples, or gradients on content.
+  Color is semantic only (meaning-coded), never decorative.
+
+TYPOGRAPHY:
+  Display serif  : Playfair Display
+    — Used: hero name, section headlines ("Still learning. Already building.")
+    — Weights: 400, 700
+    — Establishes editorial gravity and identity
+
+  Body sans      : DM Sans
+    — Used: all paragraphs, descriptions, button labels
+    — Weights: 300, 400, 500
+    — Optimized for readability at small sizes
+
+  Mono           : DM Mono
+    — Used: status tags, index numbers, capability labels, CornerHUD
+    — Weights: 400
+    — Implies system precision and engineering context
+
+  All fonts self-hosted via @fontsource (no external CDN calls, no FOUT).
+
+SURFACE LANGUAGE:
+  Cards: subtle glass-like translucent panels (bg-white/5)
+  Borders: 1px solid rgba(255,255,255,0.08)
+  Border radius: small (rounded-sm to rounded-md, 4–8px)
+  Shadows: minimal, only on interactive tilt elements
+  No skeuomorphic shadows or heavy gradients
+
+SPACING RHYTHM:
+  Section gaps: py-24 to py-32 (96–128px vertical padding)
+  Card internal: p-6 to p-8 (24–32px)
+  Element clusters: gap-2 to gap-4 (8–16px)
+  Grid: 2-column on desktop, 1-column on mobile
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+11. RESPONSIVE BEHAVIOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BREAKPOINTS (defined in useBreakpoint.ts):
+  isMobile  : window.innerWidth <= 767px
+  isTablet  : 768px <= window.innerWidth <= 1023px
+  isDesktop : window.innerWidth >= 1024px
+
+MOBILE (≤767px):
+  - Single-column layout everywhere
+  - IntroSplash: font auto-shrinks to 86% of screen width
+  - Hero: portrait stacks below text, parallax disabled
+  - Skills: sticky left rail becomes top header
+  - CornerHUD: hidden (display:none below sm:)
+  - Custom cursor: hidden (native touch cursor)
+  - No parallax motion effects
+  - Touch targets are widened for finger use
+
+TABLET (768–1023px):
+  - Partial two-column in Hero (side-by-side name + photo)
+  - Skills cards: 2-column grid
+  - Parallax effects: reduced strength
+
+DESKTOP (≥1024px):
+  - Full two-column compositions
+  - Skills: sticky left rail persists while scrolling categories
+  - Hero: full pointer parallax on all layers
+  - CornerHUD: visible bottom-right
+  - Custom cursor dot + trailing ring active
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+12. SEO, META TAGS, SCHEMA.ORG
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+File: src/layouts/BaseLayout.astro
+
+Meta tags set:
+  <title>Ashit Upadhyay - AI & ML Student</title>
+  <meta name="description" content="3rd-year AI & ML student at Vishveshwarya
+    Group of Institutions. Building with Python, Scikit-learn, and ML tools." />
+  <link rel="canonical" href="https://ashit-upadhyay.vercel.app" />
+
+Open Graph (Facebook / LinkedIn previews):
+  og:type        = website
+  og:title       = Ashit Upadhyay - AI & ML Student
+  og:description = student bio summary
+  og:url         = https://ashit-upadhyay.vercel.app
+  og:image       = https://ashit-upadhyay.vercel.app/og-image.jpg
+  og:image:width  = 1512
+  og:image:height = 788
+
+Twitter card:
+  twitter:card  = summary_large_image
+  twitter:title = Ashit Upadhyay - AI & ML Student
+  (Twitter @handle meta tags removed — no Twitter account)
+
+Icons:
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preload" href="/og-image.jpg" as="image" type="image/jpeg" />
+
+Schema.org (JSON-LD in index.astro):
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ashit Upadhyay",
+    "jobTitle": "AI & ML Student",
+    "url": "https://ashit-upadhyay.vercel.app",
+    "email": "sanjuupadhyay262@gmail.com",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Vishveshwarya Group of Institutions"
+    },
+    "knowsAbout": [
+      "Python", "Machine Learning", "Scikit-learn",
+      "Deep Learning", "HuggingFace", "MySQL",
+      "NoSQL", "AWS", "Git"
+    ],
+    "sameAs": [
+      "https://github.com/codexboy0417",
+      "https://linkedin.com/in/ashit-upadhyay",
+      "https://instagram.com/codexboy_04"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dadri",
+      "addressRegion": "Uttar Pradesh",
+      "addressCountry": "IN"
+    }
+  }
+
+Sitemap:
+  Generated automatically by @astrojs/sitemap at build time.
+  URL: https://ashit-upadhyay.vercel.app/sitemap-index.xml
+
+robots.txt:
+  User-agent: *
+  Allow: /
+  Sitemap: https://ashit-upadhyay.vercel.app/sitemap-index.xml
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+13. IMAGE ASSETS — GENERATION DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+public/og-image.jpg (Open Graph preview):
+  Size: 1512 × 788 px
+  Generated with: Python Pillow (PIL)
+  Background: solid #070707
+  Content:
+    - "Ashit Upadhyay" in large display text (Playfair Display equivalent)
+    - Tagline: "AI & ML Student — Building real things."
+    - Skills row: Python · Scikit-learn · Deep Learning · Git
+    - Top-right corner: dotted particle scatter pattern (decorative)
+  Format: JPEG quality 92
+
+public/apple-touch-icon.png (iOS home screen icon):
+  Size: 180 × 180 px
+  Generated with: Python Pillow (PIL)
+  Background: solid #070707
+  Content:
+    - "AU" monogram in centered display type
+    - Green underline accent bar below monogram
+    - Small green dot in top-right corner
+  Format: PNG (lossless)
+
+src/assets/profilePicture.jpg:
+  Source: uploaded by Ashit Upadhyay
+  Description: night photo, standing on grass, arms crossed
+  Usage: imported in Hero.tsx with `?url` suffix
+    import profilePicture from "../../assets/profilePicture.jpg?url"
+  Processed by: Astro/Vite asset pipeline (optimized at build)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+14. VERCEL DEPLOYMENT CONFIGURATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+File: vercel.json
+
+Cache headers (for hashed Astro assets — 1 year cache):
+  Source: /_astro/:path*
+  Cache-Control: public, max-age=31536000, immutable
+  (Safe because Astro hashes filenames on every build)
+
+URL rewrites (SPA-style navigation — all routes → /):
+  /about    → /
+  /stack    → /
+  /projects → /
+  /contact  → /
+
+File: astro.config.mjs
+  site: "https://ashit-upadhyay.vercel.app"
+  output: "static"  (no serverless functions needed)
+  devToolbar: { enabled: false }
+
+  Integrations:
+    @astrojs/react  — enables React inside Astro
+    @astrojs/sitemap — generates sitemap.xml at build
+
+  Redirect added:
+    /research → /projects (in case old links exist)
+
+Deploy target: Vercel
+  Connect GitHub repo → Vercel auto-deploys on push to main
+  Build command: npm run build
+  Output dir: dist/
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+15. GIT SETUP INSTRUCTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CRITICAL: The original zip contained a .git/ folder with Ashwin Gupta's
+commit history. To avoid pushing Ashwin's history to your GitHub:
+
+  cd ashwingupta.dev-main
+  rm -rf .git          ← delete old history
+  git init             ← fresh repo
+  git add .
+  git commit -m "Initial commit: Ashit Upadhyay portfolio"
+  git branch -M main
+  git remote add origin https://github.com/codexboy0417/YOUR-REPO-NAME.git
+  git push -u origin main
+
+Then connect the repo on vercel.com → New Project → Import from GitHub.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+16. PERSONAL DETAILS EMBEDDED IN CODEBASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Every occurrence of "Ashit Upadhyay" or related identity in the codebase:
+
+  Hero.tsx            : name display, alt text on photo
+  About.tsx           : all bio paragraphs, pillar content
+  Skills.tsx          : section intro text
+  Projects.tsx        : project owner name
+  Contact.tsx         : email, GitHub, LinkedIn, Instagram, location
+  BaseLayout.astro    : <title>, og:title, meta description, canonical URL
+  index.astro         : Schema.org Person structured data
+  [section].astro     : title and description on each route
+  projects/[slug].astro : name in page title
+  astro.config.mjs    : site URL
+  robots.txt          : sitemap URL
+  README.md           : project name and description
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+17. WHAT WAS DELETED AND WHY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PDF assets (2 files):
+  Reason: Ashwin's resume and PINNs research paper. Not relevant.
+
+Profile photo (.webp):
+  Reason: Ashwin's photo. Replaced with Ashit's real photo (.jpg).
+
+Company logos (14 image files):
+  Reason: BMS, Coforge, Guinness, HDFC, HSBC, IIIT, Kaggle, Augment AI,
+  Cellstrat, GIDA, IISc, Outlawed, Prismforce, Spartificial.
+  All are Ashwin's employers/institutions. None apply to Ashit.
+
+55 public/logos/ SVG files:
+  Reason: React, Next.js, TypeScript, GraphQL, Kubernetes, Docker, GCP,
+  Azure, PyTorch, TensorFlow, and 45 more were imported but unused after
+  replacing Skills categories. Kept only the 10 actually used.
+
+Deleted components (7 files):
+  Impact.tsx         — Ashwin's career impact metrics (revenue, users)
+  Featured.tsx       — HSBC featured project card
+  Recommendations.tsx — Colleague/manager testimonials
+  Research.tsx       — Academic paper cards
+  ExperienceTimeline.tsx — Work history timeline
+  BottomRightHUD.tsx — Old version, replaced by CornerHUD.tsx
+  impactData.ts      — Data file for Impact.tsx
+
+Deleted pages (3 directories):
+  src/pages/work/        — /work/* routes (job history)
+  src/pages/research/    — /research/* routes (papers)
+  src/pages/articles/    — /articles/* routes (blog)
+  All irrelevant to student portfolio.
+
+ruvector.db (1.5MB binary):
+  Reason: Vector database file. Unreferenced. Not imported by any code.
+
+stale sitemaps:
+  public/sitemap-index.xml, public/sitemap-0.xml
+  Reason: Stale from Ashwin's domain. Astro generates fresh ones at build.
+
+Awwwards ribbon:
+  In App.tsx — a badge linking to awwwards.com. Ashwin's award. Removed.
+
+Footer credit line:
+  In Contact.tsx — "Template design by Kajal Verma..." Removed.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+18. BUILD COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Install dependencies:
+  npm install
+
+Run local dev server (hot reload, http://localhost:4321):
+  npm run dev
+
+Build production bundle (outputs to dist/):
+  npm run build
+
+Preview production build locally:
+  npm run preview
+
+Note: Always run `npm install` before `npm run build` in a fresh directory.
+      The dist/ folder is not committed to git (in .gitignore).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+19. KNOWN QUIRKS & NOTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. FIRST BUILD TAKES LONGER
+   sharp (image optimizer) needs to compile native bindings.
+   Subsequent builds are faster (cached).
+
+2. DM SANS MUST LOAD BEFORE INTRO
+   IntroSplash calls document.fonts.ready before sampling text pixels.
+   If fonts fail, the fallback sans-serif renders (still looks fine).
+
+3. INTROSPLASH DISMISS CLICK DELAY
+   The click-to-dismiss listener is added after 600ms to prevent
+   accidental dismissal on the initial click that loads the page.
+
+4. PARTICLE COUNT SCALES WITH SCREEN SIZE
+   Bigger screens → larger rendered text → more sampled pixels → more particles.
+   On small phones: ~1000 particles. On large monitors: ~4000.
+
+5. CornerHUD TIMER RESETS ON RELOAD
+   It is a session-start timer (from component mount), not a clock.
+   Expected behavior.
+
+6. vercel.json rewrites are SPA rewrites, not 301 redirects.
+   Typing ashit-upadhyay.vercel.app/projects goes to / and
+   scrolls to the Projects section via JS (no separate page exists).
+
+7. ASTRO OUTPUT IS FULLY STATIC
+   No Node.js server required. All pages are pre-rendered HTML.
+   Vercel serves it from CDN (edge network globally).
+
+8. CONTACT FORM BACKEND
+   The contact form POSTs to a Vercel serverless endpoint or a configured
+   form service. Ensure a backend is set up for it to actually send emails.
+   Without backend: the form will show an error state on submit.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+20. FUTURE IMPROVEMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Short-term:
+  1. Wire contact form to a real backend (Resend, Formspree, or Vercel function)
+  2. Add more projects as you build them (SpamGuard v2, new ML projects)
+  3. Add a proper resume PDF once you have one, re-enable download button
+  4. Add section scroll progress indicator (small dots on side for orientation)
+
+Medium-term:
+  5. Add case-study expand for SpamGuard (architecture diagram, results)
+  6. Add GitHub contribution heatmap widget to About section
+  7. Add a lightweight "Currently reading / exploring" section
+  8. Optimize profilePicture.jpg with Astro Image component for faster load
+
+Long-term:
+  9. Add optional light theme toggle (preserving dark as default)
+  10. Add project filter by tag (filter: ML / Frontend / etc.)
+  11. Add testimonials strip once you have collaborators/mentors to cite
+  12. Explore adding a blog (Astro Content Collections) for technical writing
+
+================================================================================
+  END OF DOCUMENTATION
+  Ashit Upadhyay Portfolio — codexboy_04
+  sanjuupadhyay262@gmail.com
+================================================================================

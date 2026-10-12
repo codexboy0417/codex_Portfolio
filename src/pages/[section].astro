@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import App from "../app/App";
 import SiteAnalytics from "../app/SiteAnalytics";
 import "../styles/index.css";
-import profilePictureUrl from "../assets/Profile 1.jpeg?url";
+import profilePictureUrl from "../assets/profilePicture.jpg?url";
 
 export function getStaticPaths() {
   return [
@@ -27,7 +27,7 @@ const titles: Record<string, string> = {
 
 <BaseLayout
   title={titles[section] ?? "Ashit Upadhyay - AI & ML Student"}
-  description="3rd-year AI & ML student at Vishveshwarya Group of Institutions, building small ML and web projects while learning the fundamentals."
+  description="3rd-year B.Tech AI & ML student building autonomous multi-agent systems, RAG pipelines, predictive machine learning models, and full-stack applications."
   canonical={canonical}
 >
   <link slot="head" rel="preload" as="image" href={profilePictureUrl} fetchpriority="high" type="image/jpeg" />

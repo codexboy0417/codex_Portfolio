@@ -6,9 +6,6 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://ashit-upadhyay.vercel.app",
   output: "static",
-  devToolbar: {
-    enabled: false,
-  },
   redirects: {
     "/research": "/projects",
   },

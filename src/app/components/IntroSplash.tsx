@@ -5,6 +5,8 @@ type Particle = {
   y: number;
   tx: number;
   ty: number;
+  vx: number;
+  vy: number;
   size: number;
 };
 
@@ -28,7 +30,6 @@ export function IntroSplash() {
     let particles: Particle[] = [];
     let raf = 0;
     let frame = 0;
-    let ready = false;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
@@ -47,9 +48,7 @@ export function IntroSplash() {
       octx.fillText(TEXT, w / 2, h / 2);
 
       const data = octx.getImageData(0, 0, w, h).data;
-      // denser sampling = solid, uniform-looking glyphs instead of a
-      // patchy/grainy look on thinner letterforms
-      const step = w < 600 ? 2 : 3;
+      const step = w < 600 ? 3 : 4;
       const pts: { x: number; y: number }[] = [];
       for (let y = 0; y < h; y += step) {
         for (let x = 0; x < w; x += step) {
@@ -76,52 +75,36 @@ export function IntroSplash() {
         y: Math.random() * h,
         tx: t.x,
         ty: t.y,
-        // tight, consistent size range - keeps every letter reading at
-        // the same density/weight instead of some looking bolder than others
-        size: Math.random() * 0.7 + 1.0,
+        vx: 0,
+        vy: 0,
+        size: Math.random() * 1.4 + 0.6,
       }));
-      ready = true;
     }
 
-    function start() {
-      resize();
-      window.addEventListener("resize", resize);
+    resize();
+    window.addEventListener("resize", resize);
 
-      function tick() {
-        if (!ctx || !canvas) return;
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        ctx.clearRect(0, 0, w, h);
-        ctx.fillStyle = "#000";
-        ctx.fillRect(0, 0, w, h);
+    function tick() {
+      if (!ctx || !canvas) return;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, w, h);
 
-        const ease = Math.min(frame / 70, 1);
-        // jitter fades out as particles settle, so the held final frame is
-        // perfectly still and crisp - no permanent shake/static look
-        const jitter = (1 - ease) * 0.3;
-        ctx.fillStyle = "rgba(232,224,208,0.92)";
+      const ease = Math.min(frame / 70, 1);
+      ctx.fillStyle = "rgba(232,224,208,0.9)";
 
-        if (ready) {
-          for (const p of particles) {
-            p.x += (p.tx - p.x) * 0.06 * ease + (Math.random() - 0.5) * jitter;
-            p.y += (p.ty - p.y) * 0.06 * ease + (Math.random() - 0.5) * jitter;
-            ctx.fillRect(p.x, p.y, p.size, p.size);
-          }
-        }
-
-        frame++;
-        raf = requestAnimationFrame(tick);
+      for (const p of particles) {
+        p.x += (p.tx - p.x) * 0.06 * ease + (Math.random() - 0.5) * 0.3;
+        p.y += (p.ty - p.y) * 0.06 * ease + (Math.random() - 0.5) * 0.3;
+        ctx.fillRect(p.x, p.y, p.size, p.size);
       }
+
+      frame++;
       raf = requestAnimationFrame(tick);
     }
-
-    // wait for the real webfont to be ready before sampling glyph pixels,
-    // so the very first frame already uses the correct typeface/weight
-    if ((document as any).fonts?.ready) {
-      (document as any).fonts.ready.then(start).catch(start);
-    } else {
-      start();
-    }
+    raf = requestAnimationFrame(tick);
 
     function onScroll() {
       setFading(true);

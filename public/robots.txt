@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ashit-upadhyay.vercel.app/sitemap-index.xml
+Sitemap: https://www.ashwingupta.dev/sitemap-index.xml

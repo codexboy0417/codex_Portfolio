@@ -1,1 +1,8 @@
-node_modules
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+ruvector.db
+.DS_Store
+*.log

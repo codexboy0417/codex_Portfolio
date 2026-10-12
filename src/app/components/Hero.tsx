@@ -998,7 +998,7 @@ export function Hero() {
                   textTransform: "uppercase",
                 }}
               >
-                Python • Scikit-learn • Git/GitHub
+                AI Agents • RAG • LightGBM • Full-Stack
               </span>
             </div>
           </div>
