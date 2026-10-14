@@ -1,0 +1,209 @@
+{
+  "lastUpdated": "2026-10-14T17:01:38.232244+00:00",
+  "totalCount": 25,
+  "source": "seed",
+  "zones": [
+    {
+      "id": "all",
+      "label": "All Synapses",
+      "color": "#38bdf8"
+    },
+    {
+      "id": "ai",
+      "label": "AI & Machine Learning",
+      "color": "#c084fc"
+    },
+    {
+      "id": "cloud",
+      "label": "Software & Cloud",
+      "color": "#38bdf8"
+    },
+    {
+      "id": "leaders",
+      "label": "Founders & Leadership",
+      "color": "#fbbf24"
+    },
+    {
+      "id": "scholars",
+      "label": "Alumni & Scholars",
+      "color": "#4ade80"
+    }
+  ],
+  "connections": [
+    {
+      "name": "Aarav Sharma",
+      "headline": "AI & ML Researcher | LLM Evaluation",
+      "company": "AI Dynamics",
+      "zone": "AI & Machine Learning",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Priya Patel",
+      "headline": "Senior Machine Learning Engineer",
+      "company": "NeuralTech Systems",
+      "zone": "AI & Machine Learning",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Rohan Gupta",
+      "headline": "Full Stack Engineer (FastAPI & React)",
+      "company": "CloudForge",
+      "zone": "Software & Cloud",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Sneha Verma",
+      "headline": "Data Scientist | Time Series & Forecaster",
+      "company": "RetailIQ",
+      "zone": "AI & Machine Learning",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Vikram Malhotra",
+      "headline": "Founder & CEO",
+      "company": "VentureScale Labs",
+      "zone": "Founders & Leadership",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Ananya Joshi",
+      "headline": "Computer Vision Engineer | MediaPipe & PyTorch",
+      "company": "VisionCraft",
+      "zone": "AI & Machine Learning",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Devansh Singh",
+      "headline": "DevOps & Cloud Architect (AWS / Kubernetes)",
+      "company": "NextGen Infotech",
+      "zone": "Software & Cloud",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Kavya Nair",
+      "headline": "NLP Engineer | LangChain & RAG Workflows",
+      "company": "LexiFlow AI",
+      "zone": "AI & Machine Learning",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Aditya Rao",
+      "headline": "B.Tech AI & ML Scholar",
+      "company": "Vishveshwarya Group",
+      "zone": "Alumni & Scholars",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Neha Kulkarni",
+      "headline": "Product Lead | AI Tools & Infrastructure",
+      "company": "Synthetix",
+      "zone": "Founders & Leadership",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Manish Tiwari",
+      "headline": "Backend Engineer (Go, Python, Redis)",
+      "company": "ScaleMatrix",
+      "zone": "Software & Cloud",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Isha Chawla",
+      "headline": "Deep Learning Research Intern",
+      "company": "Cognitive AI Lab",
+      "zone": "Alumni & Scholars",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Siddharth Mehta",
+      "headline": "Co-Founder & CTO",
+      "company": "Apex Dynamics",
+      "zone": "Founders & Leadership",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Riya Saxena",
+      "headline": "Applied Scientist | LightGBM & Forecasting",
+      "company": "Optima Analytics",
+      "zone": "AI & Machine Learning",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Aryan Rajput",
+      "headline": "B.Tech Student & Open-Source Contributor",
+      "company": "VGI Tech Club",
+      "zone": "Alumni & Scholars",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Meera Banerjee",
+      "headline": "Distributed Systems Engineer",
+      "company": "HyperFlow Data",
+      "zone": "Software & Cloud",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Harsh Vardhan",
+      "headline": "Technical Lead & Engineering Manager",
+      "company": "Vertex Global",
+      "zone": "Founders & Leadership",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Tanvi Kapoor",
+      "headline": "AI Ethics & Model Alignment Specialist",
+      "company": "SafeIntelligence",
+      "zone": "AI & Machine Learning",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Karan Singhal",
+      "headline": "Frontend Architect | Three.js & Canvas",
+      "company": "Studio Pixel",
+      "zone": "Software & Cloud",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Divya Reddy",
+      "headline": "Database Engineer (MySQL, Vector DBs)",
+      "company": "DataMesh Technologies",
+      "zone": "Software & Cloud",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Arjun Deshmukh",
+      "headline": "Autonomous Agents Developer",
+      "company": "HiveLogic AI",
+      "zone": "AI & Machine Learning",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Pooja Hegde",
+      "headline": "AI & Data Science Student",
+      "company": "Vishveshwarya Group",
+      "zone": "Alumni & Scholars",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Nikhil Agarwal",
+      "headline": "Founding Engineer",
+      "company": "Aura Labs",
+      "zone": "Founders & Leadership",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Simran Kaur",
+      "headline": "Quantitative Analyst & ML Practitioner",
+      "company": "QuantPulse",
+      "zone": "AI & Machine Learning",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    },
+    {
+      "name": "Yash Dixit",
+      "headline": "Cloud Infrastructure Engineer",
+      "company": "SkyStream",
+      "zone": "Software & Cloud",
+      "profileUrl": "https://www.linkedin.com/in/ashit-upadhyay/"
+    }
+  ]
+}
