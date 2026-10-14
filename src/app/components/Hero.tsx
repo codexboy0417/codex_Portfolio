@@ -115,6 +115,7 @@ export function Hero() {
   }[] = [
     { label: "Stack", href: "/stack", section: "stack" },
     { label: "Contact", href: "/contact", section: "contact" },
+    { label: "Network", href: "/network", section: "network" },
   ];
 
   const navLinkStyle = {

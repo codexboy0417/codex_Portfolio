@@ -5,6 +5,7 @@ import { About } from "./components/About";
 import { Projects } from "./components/Projects";
 import { Skills } from "./components/Skills";
 import { Contact } from "./components/Contact";
+import { NetworkSection } from "./components/NetworkSection";
 import { IntroSplash } from "./components/IntroSplash";
 import { CornerHUD } from "./components/CornerHUD";
 import { useIsMobile } from "../hooks/useMediaQuery";
@@ -109,6 +110,7 @@ export default function App() {
           <Projects />
           <Skills />
           <Contact />
+          <NetworkSection />
         </HologramInterface>
       </div>
 

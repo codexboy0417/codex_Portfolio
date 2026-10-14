@@ -10,6 +10,7 @@ const SECTION_IDS = [
   "featured",
   "projects",
   "contact",
+  "network",
 ];
 
 function getSectionFromPath(path: string): string {

@@ -530,27 +530,6 @@ export function Contact() {
               </m.div>
             </div>
 
-            {/* Footer */}
-            <div
-              style={{
-                textAlign: "center",
-                marginTop: isMobile ? "5rem" : "8rem",
-                paddingTop: "2rem",
-                borderTop: "1px solid rgba(255,255,255,0.07)",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: FONT_MONO,
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.12em",
-                  color: "rgba(255,255,255,0.5)",
-                  textTransform: "uppercase",
-                }}
-              >
-                Designed & Built by Ashit Upadhyay • Deployed on Vercel
-              </span>
-            </div>
           </div>
         </div>
       </div>
